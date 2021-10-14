@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,11 +13,19 @@ class MainActivity : AppCompatActivity() {
         val rollButton: Button = findViewById(R.id.button)
 
         rollButton.setOnClickListener {
+            val resultTextView2: TextView = findViewById(R.id.textView2)
+            resultTextView2.text = "Dado 1"
+
+            val resultTextView3: TextView = findViewById(R.id.textView3)
+            resultTextView3.text = "Dado 2"
+
             val resultTextView: TextView = findViewById(R.id.textView)
             resultTextView.text = Dice(6).roll().toString()
+
+            val resultTextView4: TextView = findViewById(R.id.textView4)
+            resultTextView4.text = Dice(6).roll().toString()
         }
     }
-
 }
 
 //Instancia o dado, rola-o e retorna um número dele
