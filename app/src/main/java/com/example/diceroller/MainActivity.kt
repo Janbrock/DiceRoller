@@ -11,11 +11,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val rollButton: Button = findViewById(R.id.button)
+        //faz o layout começar com um dado e um botão
+        val diceImage: ImageView = findViewById(R.id.imageView)
+        diceImage.setImageResource(R.drawable.dice_1)
 
+        //seleciona e altera o dado correspondente a cada clique
+        val rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener {
-            val diceRoll = Dice(6).roll()
-            val diceImage: ImageView = findViewById(R.id.imageView)
+            val dice = Dice(6)
+            val diceRoll = dice.roll()
+            dice.roll()
             val drawableResource = when (diceRoll) {
                 1 -> R.drawable.dice_1
                 2 -> R.drawable.dice_2
@@ -24,12 +29,13 @@ class MainActivity : AppCompatActivity() {
                 5 -> R.drawable.dice_5
                 else -> R.drawable.dice_6
             }
+            //coloca a imagem do dado correspondente ao resultado do diceRoll
             diceImage.setImageResource(drawableResource)
+
             //atualização da descrição de conteúdo
             diceImage.contentDescription = diceRoll.toString()
         }
     }
-
 }
 
 //Instancia o dado, rola-o e retorna um número dele
