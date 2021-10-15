@@ -3,7 +3,7 @@ package com.example.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,19 +13,19 @@ class MainActivity : AppCompatActivity() {
         val rollButton: Button = findViewById(R.id.button)
 
         rollButton.setOnClickListener {
-            val resultTextView2: TextView = findViewById(R.id.textView2)
-            resultTextView2.text = "Dado 1"
-
-            val resultTextView3: TextView = findViewById(R.id.textView3)
-            resultTextView3.text = "Dado 2"
-
-            val resultTextView: TextView = findViewById(R.id.textView)
-            resultTextView.text = Dice(6).roll().toString()
-
-            val resultTextView4: TextView = findViewById(R.id.textView4)
-            resultTextView4.text = Dice(6).roll().toString()
+            val diceImage: ImageView = findViewById(R.id.imageView)
+            val diceRoll: Int = Dice(6).roll()
+            when (diceRoll) {
+                1 -> diceImage.setImageResource(R.drawable.dice_1)
+                2 -> diceImage.setImageResource(R.drawable.dice_2)
+                3 -> diceImage.setImageResource(R.drawable.dice_3)
+                4 -> diceImage.setImageResource(R.drawable.dice_4)
+                5 -> diceImage.setImageResource(R.drawable.dice_5)
+                6 -> diceImage.setImageResource(R.drawable.dice_6)
+            }
         }
     }
+
 }
 
 //Instancia o dado, rola-o e retorna um número dele
