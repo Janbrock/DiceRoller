@@ -14,8 +14,9 @@ class MainActivity : AppCompatActivity() {
         val rollButton: Button = findViewById(R.id.button)
 
         rollButton.setOnClickListener {
+            val diceRoll = Dice(6).roll()
             val diceImage: ImageView = findViewById(R.id.imageView)
-            val drawableResource = when (Dice(6).roll()) {
+            val drawableResource = when (diceRoll) {
                 1 -> R.drawable.dice_1
                 2 -> R.drawable.dice_2
                 3 -> R.drawable.dice_3
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity() {
                 else -> R.drawable.dice_6
             }
             diceImage.setImageResource(drawableResource)
+            //atualização da descrição de conteúdo
+            diceImage.contentDescription = diceRoll.toString()
         }
     }
 
